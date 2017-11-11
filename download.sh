@@ -15,3 +15,9 @@ do
 wget "https://wwwdasis.samhsa.gov/dasis2/nmhss/mh${i}_puf_csv.zip"
 unzip mh${i}_puf_csv.zip
 done
+
+wget "https://wwwdasis.samhsa.gov/dasis2/teds_pubs/TEDS/Discharges/TED_D_2011/ICPSR_35074_Delimited.zip"
+unzip ICPSR_35074_Delimited.zip
+
+wget "https://wwwdasis.samhsa.gov/dasis2/teds_pubs/TEDS/Discharges/TED_D_2010/ICPSR_34898_Delimited.zip"
+unzip ICPSR_34898_Delimited.zip
