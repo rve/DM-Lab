@@ -102,3 +102,6 @@ ENV/
 
 .zip
 .csv
+.tsv
+.txt
+.html
