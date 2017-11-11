@@ -15,4 +15,3 @@ do
 wget "https://wwwdasis.samhsa.gov/dasis2/nmhss/mh${i}_puf_csv.zip"
 unzip mh${i}_puf_csv.zip
 done
-~
