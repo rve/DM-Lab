@@ -100,8 +100,8 @@ ENV/
 # mypy
 .mypy_cache/
 
-.zip
-.csv
-.tsv
-.txt
-.html
+*.zip
+*.csv
+*.tsv
+*.txt
+*.html
