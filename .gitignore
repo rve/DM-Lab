@@ -105,3 +105,4 @@ ENV/
 *.tsv
 *.txt
 *.html
+*.swp
