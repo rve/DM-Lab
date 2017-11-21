@@ -106,3 +106,4 @@ ENV/
 *.txt
 *.html
 *.swp
+.Rproj.user
