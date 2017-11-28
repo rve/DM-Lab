@@ -23,10 +23,10 @@ bash concat.sh
 ```
 
 ## Schedule
-Week 0: Dataset Preparation
-Week 1-5: Descriptive Mining I-V
-Week 6-9: Predictive Mining I-IV
-Week 10-11: Final Presentation
+Week 0: Dataset Preparation   
+Week 1-5: Descriptive Mining I-V   
+Week 6-9: Predictive Mining I-IV   
+Week 10-11: Final Presentation   
 
 ## Dataset
 
