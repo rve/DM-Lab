@@ -18,12 +18,11 @@ For lab machines,
 wget path/to/anaconda.sh
 bash anaconda.sh
 ```
-check the lab wiki (week 1) for how to connect jupyter notebook remotely.
+check the lab wiki (week 1) for how to connect `jupyter notebook` remotely.
 
 ### Setting up
 
-Download the csv datasets and concat them. For Windows user, just install `cygwin`.
-
+Download the csv datasets and concat them. 
 ```
 cd utils
 bash download.sh
