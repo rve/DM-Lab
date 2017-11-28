@@ -15,10 +15,10 @@ jupyter notebook
 For lab machines,    
 
 ```
-wget path/to/anaconda.sh
+wget link/to/anaconda.sh
 bash anaconda.sh
 ```
-check the lab wiki (week 1) for how to connect `jupyter notebook` remotely.
+Check the lab wiki (week 1) for how to connect `jupyter notebook` remotely.
 
 ### Setting up
 
