@@ -24,9 +24,8 @@ Check the lab wiki (week 1) for how to connect `jupyter notebook` remotely.
 
 Download the csv datasets and concat them. 
 ```
-cd utils
-bash download.sh
-bash concat.sh 
+bash utils/download.sh
+bash utils/concat.sh 
 ```
 
 ## Schedule
