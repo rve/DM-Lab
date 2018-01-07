@@ -41,8 +41,3 @@ Week 10-11: Final Presentation
 * [DASIS](https://wwwdasis.samhsa.gov/dasis2/nssats.htm) - National Survey of Substance Abuse Treatment Services
 (N-SSATS)
 
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
