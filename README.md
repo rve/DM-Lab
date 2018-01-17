@@ -22,6 +22,11 @@ Check the lab wiki (week 1) for how to connect `jupyter notebook` remotely.
 
 ### Setting up
 
+Install dependencies
+```
+pip install -r requirements.txt
+```
+
 Download the csv datasets and concat them. 
 ```
 bash utils/download.sh

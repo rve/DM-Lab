@@ -103,8 +103,6 @@ ENV/
 *.zip
 *.csv
 *.tsv
-*.txt
 *.html
 *.swp
 .Rproj.user
-*.png
