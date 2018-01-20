@@ -12,7 +12,7 @@ Data Mining Practical Course
 jupyter notebook
 ```
 
-For lab machines,    
+For lab machines  
 
 ```
 wget link/to/anaconda.sh
@@ -42,7 +42,7 @@ Download the csv datasets and concat them.
 bash utils/download.sh
 bash utils/concat.sh 
 ```
-Get the current preprocessed dataset (for Google Cloud):
+Get the current preprocessed dataset (for Google Cloud):   
 go to the folder of most recent week 
 ```
 jupyter nbconvert --to python get_newsplit.ipynb
