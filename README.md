@@ -48,6 +48,12 @@ go to the folder of most recent week
 jupyter nbconvert --to python get_newsplit.ipynb
 python get_newsplit.py
 ```
+### Training 
+For Google Cloud
+```
+nohup some.py | tee result.out &
+```
+you can check the process with `htop` FYI
 
 ## Schedule
 Week 0: Dataset Preparation   
