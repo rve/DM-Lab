@@ -20,6 +20,16 @@ bash anaconda.sh
 ```
 Check the lab wiki (week 1) for how to connect `jupyter notebook` remotely.
 
+
+
+For Google Clound
+
+```
+sudo apt-get install python-pip
+sudo apt-get install unzip
+```
+You may also install `zsh` and `oh-my-zsh` for the auto completion.
+
 ### Setting up
 
 Install dependencies
