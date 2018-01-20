@@ -16,3 +16,5 @@ done
 #rm mh${i}_puf_csv.zip
 #done
 
+
+echo "download done"
