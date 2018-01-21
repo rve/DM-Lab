@@ -48,6 +48,12 @@ go to the folder of most recent week
 jupyter nbconvert --to python get_newsplit.ipynb
 python get_newsplit.py
 ```
+### Running
+For Google Cloud
+```
+nohup time python some.py | tee result.out &
+```
+you can check the process with `htop` FYI
 
 ## Schedule
 Week 0: Dataset Preparation   
@@ -61,4 +67,3 @@ Week 10-11: Final Presentation
 * [DASIS](https://wwwdasis.samhsa.gov/dasis2/nmhss.htm) - National Mental Health Services Survey (N-MHSS)
 * [DASIS](https://wwwdasis.samhsa.gov/dasis2/nssats.htm) - National Survey of Substance Abuse Treatment Services
 (N-SSATS)
-
