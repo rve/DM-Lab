@@ -1,0 +1,21 @@
+/home/jiongrr/DM-Lab/dmlab/local/lib/python2.7/site-packages/sklearn/cross_validation.py:41: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved. Also note that the interface of the new CV iterators are different from that of this module. This module will be removed in 0.20.
+  "This module will be removed in 0.20.", DeprecationWarning)
+(5740, 62)
+(8570, 62) ['RACE', 'PCPFLG', 'PRIMINC', 'LIVARAG', 'BENZFLG', 'HLTHINS', 'GENDER', 'ROUTE3', 'PRIMPAY', 'MARSTAT', 'PSYPROB', 'ROUTE2', 'EMPLOY', 'SUB2', 'FRSTUSE3', 'FREQ3', 'FRSTUSE2', 'OTHERFLG', 'EDUC', 'FREQ2', 'FREQ1', 'YEAR', 'PSOURCE', 'DETCRIM', 'DIVISION', 'REGION', 'NOPRIOR', 'NUMSUBS', 'ALCDRUG', 'METHUSE', 'FRSTUSE1', 'AGE', 'COKEFLG', 'OPSYNFLG', 'IDU', 'SERVSETA', 'ROUTE1', 'MARFLG', 'MTHAMFLG', 'HERFLG', 'ALCFLG', 'SUB1']
+original score
+['0.632', '0.626', '0.628']
+0.629
+tuning: Cs:
+{'penalty': ('l1', 'l2'), 'multi_class': ('crammer_singer', 'ovr'), 'C': array([ 0.01      ,  0.01128838,  0.01274275,  0.0143845 ,  0.01623777,
+        0.01832981,  0.02069138,  0.02335721,  0.02636651,  0.02976351,
+        0.03359818,  0.0379269 ,  0.04281332,  0.0483293 ,  0.05455595,
+        0.06158482,  0.06951928,  0.078476  ,  0.08858668,  0.1       ])}
+best score
+0.631038506418
+best parameter
+LinearSVC(C=0.069519279617756058, class_weight=None, dual=False,
+     fit_intercept=True, intercept_scaling=1, loss='squared_hinge',
+     max_iter=1000, multi_class='ovr', penalty='l2', random_state=None,
+     tol=0.0001, verbose=0)
+948.27user 2.06system 3:09.50elapsed 501%CPU (0avgtext+0avgdata 462908maxresident)k
+0inputs+0outputs (0major+303430minor)pagefaults 0swaps
