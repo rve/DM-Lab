@@ -1,0 +1,8 @@
+                        Model  Validate Set Score
+0         Logistic Regression               53.32
+1               Random Forest               52.73
+4                  Linear SVC               52.62
+6                     XGBoost               52.62
+2                  Perceptron               44.93
+3  Stochastic Gradient Decent               44.73
+5                    AdaBoost               36.75
