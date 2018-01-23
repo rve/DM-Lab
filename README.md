@@ -43,15 +43,15 @@ Download the csv datasets and concat them.
 bash utils/download.sh
 bash utils/concat.sh 
 ```
-Get the current preprocessed dataset (for Google Cloud):   
-go to the folder of most recent week 
+To get the current preprocessed dataset (for Google Cloud):   
+inside the folder of most recent week, run
 ```
-jupyter nbconvert --to python get_newsplit.ipynb
 python get_newsplit.py
 ```
 ### Running
 Running on Google Cloud without hanging up FYI:
 ```
+jupyter nbconvert --to python some.ipynb
 nohup time python some.py | tee result.out &
 ```
 you can check the process with `htop`.
