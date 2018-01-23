@@ -36,6 +36,7 @@ Install dependencies
 ```
 pip install -r requirements.txt
 ```
+You should also install `xgboost` manually if you're using it. The installation can be tricky for Mac user, you may need to compile it while changing makefile exports to `gcc-7`&`g++-7`.
 
 Download the csv datasets and concat them. 
 ```
@@ -49,11 +50,11 @@ jupyter nbconvert --to python get_newsplit.ipynb
 python get_newsplit.py
 ```
 ### Running
-For Google Cloud
+Running on Google Cloud without hanging up FYI:
 ```
 nohup time python some.py | tee result.out &
 ```
-you can check the process with `htop` FYI
+you can check the process with `htop`.
 
 ## Schedule
 Week 0: Dataset Preparation   
