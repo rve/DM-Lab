@@ -24,64 +24,37 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn import metrics
 from imblearn.over_sampling import SMOTE
 
-get_ipython().magic('matplotlib notebook')
-sns.set(font_scale=1)
-plt.style.use('ggplot')
+
+# In[57]:
+
+train_=pd.read_csv('../DM-Lab/train_allcols.csv')
+validate_=pd.read_csv('../DM-Lab/validate_allcols.csv')
 
 
-# In[2]:
+# In[61]:
 
-da = pd.read_csv('../final.csv', sep=',')
-
-
-# In[4]:
-
-#for drop_list_suppl , we'll handle the missing values later
-drop_list = ['REGION', 'DIVISION', 'PRIMINC',
-             'CBSA10', 'STFIPS', 'CASEID', 'METHUSE', 
-             'ALCFLG', 'COKEFLG', 'MARFLG', 'HERFLG', 'METHFLG', 'OPSYNFLG', 'PCPFLG', 'HALLFLG', 'MTHAMFLG', 
-             'AMPHFLG', 'STIMFLG', 'BENZFLG', 'TRNQFLG', 'BARBFLG', 'SEDHPFLG', 'INHFLG', 'OTCFLG', 'OTHERFLG', 
-             'ALCDRUG', ]
-drop_list_suppl = ['FREQ2', 'FREQ3', 'FRSTUSE2', 'FRSTUSE3', 'ROUTE2', 'ROUTE3', ]
-
-#howto deal with: priminc
-t_df = da.drop(drop_list + drop_list_suppl, axis=1)
-t_df['DETCRIM'].replace(to_replace=[-9], value = 0, inplace=True)
-t_df['DETNLF'].replace(to_replace=[-9], value = 0, inplace=True)
-t_df['IDU'].replace(to_replace=[-9], value = 0, inplace=True)
-t_df.ix[t_df.GENDER.isin([1]), 'PREG'] = 2
-
-pp_da = t_df
-pp_da = pp_da[(pp_da >= 0).all(1)]
-print (pp_da.shape)
-print (pp_da.columns.tolist())
+train = train_.query('SUB2 != 1')
+validate = validate_.query('SUB2 != 1')
+print (train['SUB2'].value_counts())
 
 
-# In[7]:
+# In[63]:
 
-top6 = pp_da[pp_da['SUB2'].isin([2,3,4,5,7,10])]
+retain_list = ['EMPLOY','GENDER','FREQ1','YEAR','EDUC','PSYPROB','PSOURCE','SERVSETA','DETCRIM',
+               'REGION','NOPRIOR','DIVISION','DSMCRIT','ROUTE1','SUB1','AGE','IDU','SUB3','ROUTE3',
+               'FREQ3','FRSTUSE3','FREQ2','FRSTUSE2']
 
-none = pp_da[pp_da['SUB2'].isin([1])]
-nonesample = none.sample(130000)
+train = train[train['SUB2'].isin([2,3,4,5,7,10])]
+validate = validate[validate['SUB2'].isin([2,3,4,5,7,10])]
 
-top7_scaled = pd.concat([top6, nonesample])
-
-
-# In[8]:
-
-X = top7_scaled.drop(['SUB2','SUB3','NUMSUBS'], axis=1)
-y = top7_scaled['SUB2']
-
-
-# In[9]:
-
-from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(X, y,
-                                                    stratify=y, 
-                                                    test_size=0.20)
+X_train = train[retain_list]
+y_train = train["SUB2"]
+X_validate = validate[retain_list]
+y_validate = validate["SUB2"]
+X_train.shape, X_validate.shape
 
 
-# In[10]:
+# In[64]:
 
 #one hot
 
@@ -92,7 +65,7 @@ enc = preprocessing.OneHotEncoder()
 enc.fit(X_train)
 
 
-# In[11]:
+# In[65]:
 
 # 3. Transform
 X_train_enc = enc.transform(X_train).toarray()
@@ -100,65 +73,71 @@ X_train_enc = enc.transform(X_train).toarray()
 X_train_enc.shape
 
 
-# In[12]:
+# In[67]:
 
 # 4. Transform test
-X_test_enc = enc.transform(X_test).toarray()
+X_val_enc = enc.transform(X_validate).toarray()
 
-X_test_enc.shape
+X_val_enc.shape
 
 
-# In[51]:
+# In[68]:
 
 # Random Forest
 
-random_forest = RandomForestClassifier(n_estimators=100, max_depth=20, random_state=100)
+random_forest = RandomForestClassifier(n_estimators=100)
 random_forest.fit(X_train_enc, y_train)
 random_forest.score(X_train_enc, y_train)
 
 
-# In[52]:
+# In[69]:
 
-yp_rf = random_forest.predict(X_test_enc)
-acc_rf = metrics.accuracy_score(yp_rf, y_test)
-
-
-# In[53]:
-
-rec_rf = metrics.recall_score(y_test, yp_rf, average='macro')
+yp_rf = random_forest.predict(X_val_enc)
+print (metrics.accuracy_score(yp_rf, y_validate))
 
 
-# In[ ]:
+# In[70]:
 
-print(acc_rf, rec_rf)
-
-
-# In[54]:
-
-metrics.classification_report(y_test, yp_rf)
+print (metrics.recall_score(y_validate, yp_rf, average='macro'))
 
 
-# In[18]:
+# In[74]:
 
-# Decision Tree
-
-decision_tree = DecisionTreeClassifier(random_state=1)
-decision_tree.fit(X_train_enc, y_train)
-decision_tree.score(X_train_enc, y_train)
-
-
-# In[19]:
-
-yp_dt = decision_tree.predict(X_test_enc)
-acc_dt = metrics.accuracy_score(yp_dt, y_test)
-
-
-# In[20]:
-
-rec_dt = metrics.recall_score(y_test, yp_dt, average='macro')
+print (metrics.classification_report(y_validate, yp_rf))
 
 
 # In[ ]:
 
-print(acc_dt, rec_dt)
+from sklearn.grid_search import GridSearchCV
+from sklearn.datasets import make_classification
+
+# Build a classification task using 3 informative features
+'''X, y = make_classification(n_samples=1000,
+                           n_features=10,
+                           n_informative=3,
+                           n_redundant=0,
+                           n_repeated=0,
+                           n_classes=2,
+                           random_state=0,
+                           shuffle=False)'''
+
+
+rfc = RandomForestClassifier(n_jobs=-1, max_features='sqrt', n_estimators=50, oob_score = True) 
+
+param_grid = { 
+    'n_estimators': [100, 200, 250],
+    'max_features': ['auto', 'sqrt', 'log2'],
+    'max_depth': [15, 20, 25],
+    'min_samples_leaf': [10, 25, 50, 100],
+    'bootstrap': [True, False],
+}
+
+CV_rfc = GridSearchCV(estimator=rfc, param_grid=param_grid, cv= 5)
+CV_rfc.fit(X_train_enc, y_train)
+print (CV_rfc.best_params_)
+
+
+# In[ ]:
+
+
 
