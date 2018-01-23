@@ -7,11 +7,6 @@ Data Mining Practical Course
 
 ### Prerequisites
 
-
-```
-jupyter notebook
-```
-
 For lab machines  
 
 ```
@@ -19,7 +14,6 @@ wget link/to/anaconda.sh
 bash anaconda.sh
 ```
 Check the lab wiki (week 1) for how to connect `jupyter notebook` remotely.
-
 
 
 For Google Clound
@@ -36,24 +30,26 @@ Install dependencies
 ```
 pip install -r requirements.txt
 ```
+You should also install `xgboost` manually if you're using it. The installation can be tricky for Mac user, you may need to compile it while changing makefile exports to `gcc-7`&`g++-7`.
+
 
 Download the csv datasets and concat them. 
 ```
 bash utils/download.sh
 bash utils/concat.sh 
 ```
-Get the current preprocessed dataset (for Google Cloud):   
-go to the folder of most recent week 
+To get the current preprocessed dataset (for Google Cloud):   
+inside the folder of most recent week, run
 ```
-jupyter nbconvert --to python get_newsplit.ipynb
 python get_newsplit.py
 ```
 ### Running
-For Google Cloud
+Running on Google Cloud without hanging up FYI:
 ```
+jupyter nbconvert --to python some.ipynb
 nohup time python some.py | tee result.out &
 ```
-you can check the process with `htop` FYI
+you can check the process with `htop`.
 
 ## Schedule
 Week 0: Dataset Preparation   
