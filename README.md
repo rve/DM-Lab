@@ -7,11 +7,6 @@ Data Mining Practical Course
 
 ### Prerequisites
 
-
-```
-jupyter notebook
-```
-
 For lab machines  
 
 ```
@@ -19,7 +14,6 @@ wget link/to/anaconda.sh
 bash anaconda.sh
 ```
 Check the lab wiki (week 1) for how to connect `jupyter notebook` remotely.
-
 
 
 For Google Clound
@@ -37,6 +31,7 @@ Install dependencies
 pip install -r requirements.txt
 ```
 You should also install `xgboost` manually if you're using it. The installation can be tricky for Mac user, you may need to compile it while changing makefile exports to `gcc-7`&`g++-7`.
+
 
 Download the csv datasets and concat them. 
 ```
