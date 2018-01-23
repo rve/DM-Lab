@@ -37,8 +37,8 @@ train_.shape, validate_.shape, #test.shape
 # In[55]:
 
 #train.describe()
-train = train_.sample(20000)
-validate = validate_.sample(10000)
+train = train_#.sample(20000)
+validate = validate_#.sample(10000)
 train_.shape, #validate_.shape, validate.head(2)
 
 
@@ -96,7 +96,7 @@ for n, s in ans:
 #train = train.query('SUB1 <= 10').query('SUB2 <= 10')
 #validate = validate.query('SUB1 <= 10').query('SUB2 <= 10')
 
-#drop_list = ['SUB2',  'ROUTE2', 'FREQ2', 'FRSTUSE2', 'SUB3', 'ROUTE3', 'FREQ3', 'FRSTUSE3', 'NUMSUBS'
+drop_list = ['SUB2',  'ROUTE2', 'FREQ2', 'FRSTUSE2', 'SUB3', 'ROUTE3', 'FREQ3', 'FRSTUSE3', 'NUMSUBS'
              ]
 retain_list = ['EMPLOY','GENDER','FREQ1','YEAR','EDUC','PSYPROB','PSOURCE','SERVSETA','DETCRIM',
                'REGION','NOPRIOR','DIVISION','DSMCRIT','ROUTE1','SUB1','AGE','IDU','SUB3','ROUTE3',
