@@ -23,13 +23,13 @@ from sklearn.linear_model import Perceptron
 from sklearn.linear_model import SGDClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn import metrics
-from imblearn.over_sampling import SMOTE
 
 
 # In[57]:
 
-train_=pd.read_csv('../DM-Lab/train_allcols.csv')
-validate_=pd.read_csv('../DM-Lab/validate_allcols.csv')
+train_=pd.read_csv('../train_allcols.csv')
+validate_=pd.read_csv('../validate_allcols.csv')
+characters=pd.read_csv('../week9/finalcharacters.csv')
 
 
 # In[61]:
@@ -52,7 +52,9 @@ X_train = train[retain_list]
 y_train = train["SUB2"]
 X_validate = validate[retain_list]
 y_validate = validate["SUB2"]
-X_train.shape, X_validate.shape
+X_char = character[retain_list]
+y_char = character["SUB2"]
+X_train.shape, X_validate.shape, X_char.shape
 
 
 # In[64]:
@@ -78,6 +80,7 @@ X_train_enc.shape
 
 # 4. Transform test
 X_val_enc = enc.transform(X_validate).toarray()
+X_char_enc = enc.transform(X_char).toarray()
 
 X_val_enc.shape
 
@@ -86,7 +89,7 @@ X_val_enc.shape
 
 # Random Forest
 
-random_forest = RandomForestClassifier(n_estimators=100)
+random_forest = RandomForestClassifier(n_estimators=200, max_depth=50)
 random_forest.fit(X_train_enc, y_train)
 random_forest.score(X_train_enc, y_train)
 
@@ -109,36 +112,6 @@ print (metrics.classification_report(y_validate, yp_rf))
 
 # In[ ]:
 
-from sklearn.grid_search import GridSearchCV
-from sklearn.datasets import make_classification
-
-# Build a classification task using 3 informative features
-'''X, y = make_classification(n_samples=1000,
-                           n_features=10,
-                           n_informative=3,
-                           n_redundant=0,
-                           n_repeated=0,
-                           n_classes=2,
-                           random_state=0,
-                           shuffle=False)'''
-
-
-rfc = RandomForestClassifier(n_jobs=-1, max_features='sqrt', n_estimators=50, oob_score = True) 
-
-param_grid = { 
-    'n_estimators': [100, 200, 250],
-    'max_features': ['auto', 'sqrt', 'log2'],
-    'max_depth': [15, 20, 25],
-    'min_samples_leaf': [10, 25, 50, 100],
-    'bootstrap': [True, False],
-}
-
-CV_rfc = GridSearchCV(estimator=rfc, param_grid=param_grid, cv= 5)
-CV_rfc.fit(X_train_enc, y_train)
-print (CV_rfc.best_params_)
-
-
-# In[ ]:
-
-
+yp_char = random_forest.predict_proba(X_char_enc)
+print (yp_char)
 
